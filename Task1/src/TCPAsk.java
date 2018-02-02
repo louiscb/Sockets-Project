@@ -2,7 +2,7 @@ import java.net.*;
 import java.io.*;
 import tcpclient.TCPClient;
 
- public class TCPAsk {
+public class TCPAsk {
     public static void main( String[] args) {
         String hostname;
         int port;
