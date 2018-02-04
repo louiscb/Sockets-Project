@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Sockets-Project.iml" filepath="$PROJECT_DIR$/.idea/Sockets-Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task-2-Server-TCP/Task-2-Server-TCP.iml" filepath="$PROJECT_DIR$/Task-2-Server-TCP/Task-2-Server-TCP.iml" />
+    </modules>
+  </component>
+</project>
