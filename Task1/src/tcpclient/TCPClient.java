@@ -5,11 +5,13 @@ import java.io.*;
 public class TCPClient {
     public static String askServer(String hostname, int port, String ToServer) throws IOException {
         StringBuilder s = new StringBuilder();
+        Socket socket = new Socket(hostname, port);
+
+        if (ToServer == null)
+            ToServer = "NULL";
 
         try {
-            Socket socket = new Socket(hostname, port);
-
-            //timeout in 3 secs
+            //timeout in 5 secs
             socket.setSoTimeout(5000);
 
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -19,16 +21,23 @@ public class TCPClient {
 
             int outputChar = 0;
 
+            long timeToStop = System.currentTimeMillis()+5000;
+
             //If the char read from the bufferreader is -1 it is the end of the transmission
             while (outputChar != -1) {
                 outputChar = in.read();
                 char c = (char)outputChar;
-                System.out.print(c);
                 s.append(c);
+
+                //Second timeout incase the server continously sends data without stopping
+                if (System.currentTimeMillis() > timeToStop)
+                    throw new SocketTimeoutException();
             }
-            
+
+            socket.close();
             return s.toString();
         } catch (SocketTimeoutException e) {
+            socket.close();
             return s.toString();
         }
     }
