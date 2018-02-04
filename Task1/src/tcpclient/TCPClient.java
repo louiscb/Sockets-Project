@@ -8,8 +8,9 @@ public class TCPClient {
 
         try {
             Socket socket = new Socket(hostname, port);
+
             //timeout in 3 secs
-            socket.setSoTimeout(3000);
+            socket.setSoTimeout(5000);
 
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             out.println(ToServer);
@@ -25,7 +26,6 @@ public class TCPClient {
                 System.out.print(c);
                 s.append(c);
             }
-
             return s.toString();
         } catch (SocketTimeoutException e) {
             return s.toString();
