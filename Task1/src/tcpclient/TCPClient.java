@@ -26,6 +26,7 @@ public class TCPClient {
                 System.out.print(c);
                 s.append(c);
             }
+            
             return s.toString();
         } catch (SocketTimeoutException e) {
             return s.toString();
