@@ -39,10 +39,10 @@ public class HTTPEcho {
         try {
             do {
                 outputLine = in.readLine();
-                response.append("\r\n");
                 response.append(outputLine);
+                response.append("\r\n");
             } while (!outputLine.isEmpty());
-           sendResponse(response);
+            sendResponse(response);
         } catch (SocketTimeoutException e) {
            sendResponse(response);
         } catch (IOException e) {
@@ -53,8 +53,7 @@ public class HTTPEcho {
     private static void sendResponse(StringBuilder response) throws IOException {
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         System.out.println("Writing Message to Client...");
-        response.append("\r\n");
-        out.println("HTTP/1.1 200 OK");
+        out.print("HTTP/1.1 200 OK");
         out.println("Content-Type: text/html");
         out.println("\r\n");
         out.println(response.toString());
